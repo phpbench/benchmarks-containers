@@ -9,8 +9,9 @@ Including:
 - [Symfony Dependency Injection](https://github.com/symfony/DependencyInjection).
 - [Pimple](https://github.com/silexphp/Pimple).
 - [PHPBench Container](https://github.com/phpbench/phpbench).
+- [Illuminate (Laravel) Container](https://github.com/illuminate/container)
 
-Note that PHPBench Container is not the Not a "real" container, but a minimal
+Note that PHPBench Container is not a "real" container, but a minimal
 ad-hoc call-back based container used by PHPBench itself.
 
 Run the Benchmarks
