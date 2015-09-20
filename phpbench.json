@@ -1,0 +1,12 @@
+{
+    "path": "benchmarks",
+    "bootstrap": "vendor/autoload.php",
+    "reports": {
+        "containers": {
+            "extends": "aggregate",
+            "exclude": ["subject", "group", "params"],
+            "title": "Container get - no optimization",
+            "description": "Retrieve a single class without any constructor arguments from an uncompiled container"
+        }
+    }
+}
