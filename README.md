@@ -21,6 +21,6 @@ Run the Benchmarks
 
 ````bash
 $ composer install
-$ ./vendor/bin/phpbench run --report=containers
+$ ./vendor/bin/phpbench run --report=all
 ````
 
