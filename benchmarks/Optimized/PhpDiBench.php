@@ -18,9 +18,6 @@ class PhpDiBench extends OptimizedBench
         ));
 
         $this->container = $builder->build();
-
-        // warm up the container
-        $this->container->get('bicycle_factory');
     }
 
     /**
