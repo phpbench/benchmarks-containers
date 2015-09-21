@@ -1,5 +1,9 @@
 {
     "name": "phpbench/benchmark-containers",
+    "comments": [
+        "Doctrine Cache is for PHP-DI",
+        "Symfony Config is for Symfony Dependency Injection (for the cache)"
+    ],
     "require": {
         "phpbench/phpbench": "@dev",
         "php-di/php-di": "^5.0.0",
