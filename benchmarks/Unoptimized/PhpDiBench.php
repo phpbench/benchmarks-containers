@@ -1,14 +1,10 @@
 <?php
 
-namespace PhpBench\Benchmarks\Container;
+namespace PhpBench\Benchmarks\Container\Unoptimized;
 
 use DI\ContainerBuilder;
 
-/**
- * @beforeMethod init
- * @iterations 4
- */
-class PhpDiBench extends AbstractBench
+class PhpDiBench extends UnoptimizedBench
 {
     private $container;
 

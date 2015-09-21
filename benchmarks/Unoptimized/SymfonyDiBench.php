@@ -1,14 +1,10 @@
 <?php
 
-namespace PhpBench\Benchmarks\Container;
+namespace PhpBench\Benchmarks\Container\Unoptimized;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-/**
- * @beforeMethod init
- * @iterations 4
- */
-class SymfonyDiBench extends AbstractBench
+class SymfonyDiBench extends UnoptimizedBench
 {
     private $container;
 

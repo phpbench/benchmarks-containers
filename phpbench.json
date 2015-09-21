@@ -2,11 +2,24 @@
     "path": "benchmarks",
     "bootstrap": "vendor/autoload.php",
     "reports": {
-        "containers": {
+        "unoptimized": {
             "extends": "aggregate",
             "exclude": ["subject", "group", "params"],
-            "title": "Container get - no optimization",
-            "description": "Retrieve a single class without any constructor arguments from an uncompiled container"
+            "title": "Container get: un-optimized",
+            "description": "Retrieve a single class without any constructor arguments from an un-optimized container",
+            "sort": {"time": "asc"},
+            "debug": false,
+            "selector": "//subject[group/@name='unoptimized']/variant"
+        },
+        "optimized": {
+            "title": "Container get: optimized",
+            "description": "Retrieve a single class without any constructor arguments from an optimized container",
+            "extends": "unoptimized",
+            "selector": "//subject[group/@name='optimized']/variant"
+        },
+        "all": {
+            "generator": "composite",
+            "reports": ["unoptimized", "optimized"]
         }
     }
 }

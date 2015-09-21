@@ -1,24 +1,22 @@
 <?php
 
-namespace PhpBench\Benchmarks\Container;
+namespace PhpBench\Benchmarks\Container\Unoptimized;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Pimple\Container;
+use PhpBench\Container;
 
 /**
- * @beforeMethod init
- * @iterations 4
+ * @group optimized
  */
-class PimpleBench extends AbstractBench
+class PhpBenchDiBench extends UnoptimizedBench
 {
     private $container;
 
     public function init()
     {
         $container = new Container();
-        $container['bicycle_factory'] = function ($c) {
+        $container->register('bicycle_factory', function ($c) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
-        };
+        });
         $this->container = $container;
     }
 
@@ -27,7 +25,7 @@ class PimpleBench extends AbstractBench
      */
     public function benchGet()
     {
-        $this->container['bicycle_factory'];
+        $this->container->get('bicycle_factory');
     }
 }
 
