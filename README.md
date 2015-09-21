@@ -1,6 +1,8 @@
 PHP Container Benchmarking Suite
 ================================
 
+[![Build Status](https://travis-ci.org/phpbench/benchmarks-containers.svg)](https://travis-ci.org/phpbench/benchmarks-containers)
+
 This benchmarking suite compares PHP Dependency Injection Containers.
 
 Including:
