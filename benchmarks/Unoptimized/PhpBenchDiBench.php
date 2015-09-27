@@ -2,7 +2,7 @@
 
 namespace PhpBench\Benchmarks\Container\Unoptimized;
 
-use PhpBench\Container;
+use PhpBench\DependencyInjection\Container;
 
 /**
  * @group optimized

@@ -1,6 +1,12 @@
 {
     "path": "benchmarks",
     "bootstrap": "vendor/autoload.php",
+    "outputs": {
+        "container_html": {
+            "title": "PHP Dependency Injection Container Benchmarks",
+            "extends": "html"
+        }
+    },
     "reports": {
         "unoptimized": {
             "extends": "aggregate",
