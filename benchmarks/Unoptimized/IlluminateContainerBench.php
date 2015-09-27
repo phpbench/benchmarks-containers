@@ -13,7 +13,7 @@ class IlluminateContainerBench extends UnoptimizedBench
         $builder = new Container();
         $builder->bind('bicycle_factory', function ($app) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory();
-        });
+        }, true);
         $this->container = $builder;
     }
 
