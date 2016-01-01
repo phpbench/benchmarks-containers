@@ -5,7 +5,7 @@
         "Symfony Config is for Symfony Dependency Injection (for the cache)"
     ],
     "require": {
-        "phpbench/phpbench": "@dev",
+        "phpbench/phpbench": "dev-master",
         "php-di/php-di": "^5.0.0",
         "symfony/dependency-injection": "^2.7.0",
         "pimple/pimple": "^3.0.0",
