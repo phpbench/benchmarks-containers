@@ -7,7 +7,7 @@ use Doctrine\Common\Cache\FilesystemCache;
 
 /**
  * @Groups({"php-di"}, extend=true)
- * @BeforeClassMethods({"clearCache", "warmup"})
+ * @BeforeClassMethods({"clearCache"})
  */
 class PhpDiBench extends ContainerBenchCase
 {
