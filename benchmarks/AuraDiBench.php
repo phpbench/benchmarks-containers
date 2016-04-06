@@ -11,11 +11,9 @@ class AuraDiBench extends ContainerBenchCase
 {
     private $container;
 
-    /**
-     * @Skip()
-     */
     public function benchGetUnoptimized()
     {
+        $this->container->get('bicycle_factory');
     }
 
     public function benchGetOptimized()
@@ -29,8 +27,7 @@ class AuraDiBench extends ContainerBenchCase
     }
 
     public function benchLifecycle()
-    {
-        $this->init();
+    {        
         $this->container->get('bicycle_factory');
     }
 
