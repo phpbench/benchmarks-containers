@@ -9,4 +9,4 @@ before_script:
   - composer install
 
 script: 
-  - php vendor/bin/phpbench run --report=all --output=console --output=container_html
+  - php vendor/bin/phpbench run --report=container

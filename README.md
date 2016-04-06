@@ -42,7 +42,7 @@ Subjects (all executed 1000 times):
 - `GetPrototype`: Return a new instance of the service.
 - `Lifecycle`: Instantiate the container and return a shared service.
 
-benchmark | subject:benchGetOptimized:mode | subject:benchGetUnoptimized:mode | subject:benchGetPrototype:mode | subject:benchLifecycle:mode
+benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
  --- | --- | --- | --- | --- 
 PhpDiBench | 0.317μs | 0.307μs | 4.670μs | 32.875μs
 PhpBenchBench | 0.198μs |  |  | 1.251μs
@@ -51,6 +51,9 @@ PimpleBench | 1.403μs |  | 1.402μs | 3.430μs
 SymfonyDiBench | 0.377μs | 0.810μs | 0.834μs | 2.837μs
 ZendServiceManagerBench | 0.214μs |  | 1.137μs | 2.681μs
 LeagueBench | 0.614μs |  | 1.863μs | 6.575μs
+
+Alternatively you may look at the latest [travis
+build](https://travis-ci.org/phpbench/benchmarks-containers).
 
 Run the Benchmarks
 ------------------
