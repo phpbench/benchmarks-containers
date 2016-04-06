@@ -2,12 +2,12 @@
 
 namespace PhpBench\Benchmarks\Container;
 
-use Pimple\Container;
+use Aura\Di\ContainerBuilder;
 
 /**
- * @Groups({"pimple"}, extend=true)
+ * @Groups({"aura-di"}, extend=true)
  */
-class PimpleBench extends ContainerBenchCase
+class AuraDiBench extends ContainerBenchCase
 {
     private $container;
 
@@ -20,18 +20,18 @@ class PimpleBench extends ContainerBenchCase
 
     public function benchGetOptimized()
     {
-        $this->container['bicycle_factory'];
+        $this->container->get('bicycle_factory');
     }
 
     public function benchGetPrototype()
     {
-        $this->container['bicycle_factory_prototype'];
+        $this->container->newInstance('PhpBench\Benchmarks\Container\Acme\BicycleFactory');
     }
 
     public function benchLifecycle()
     {
         $this->init();
-        $this->container['bicycle_factory'];
+        $this->container->get('bicycle_factory');
     }
 
     public function initUnoptimized()
@@ -46,16 +46,12 @@ class PimpleBench extends ContainerBenchCase
 
     public function init()
     {
+        $builder = new ContainerBuilder();
+        $container = $builder->newInstance();
         $container = new Container();
-        $closure = function ($c) {
-            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
-        };
 
-        $prototype = $container->factory($closure);
+        $container->set('bicycle_factory', $di->lazyNew('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
 
-        $container['bicycle_factory'] = $closure;
-        $container['bicycle_factory_prototype'] = $prototype;
         $this->container = $container;
     }
 }
-
