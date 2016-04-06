@@ -68,7 +68,7 @@ benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchL
 PhpDiBench | 0.306μs | 0.693μs | 22.049μs | 50.622μs
 PhpBenchBench | 0.237μs |  |  | 1.522μs
 IlluminateBench | 0.733μs |  | 3.162μs | 8.171μs
-PimpleBench | 1.479μs |  | 1.457μs | 3.704μs
+PimpleBench | 0.414μs |  | 1.457μs | 3.704μs
 SymfonyDiBench | 0.435μs | 1.001μs | 0.882μs | 3.797μs
 ZendServiceManagerBench | 0.259μs |  | 1.164μs | 4.139μs
 LeagueBench | 0.637μs |  | 1.906μs | 8.326μs
@@ -86,7 +86,6 @@ PimpleBench | 764,064b | 764,064b |  | 764,064b | 763,376b
 SymfonyDiBench | 916,744b | 916,744b | 1,123,880b | 916,744b | 916,056b
 ZendServiceManagerBench | 902,008b | 902,008b |  | 902,008b | 2,991,968b
 LeagueBench | 885,168b | 885,168b |  | 885,168b | 2,715,720b
-
 
 Alternatively you may look at the latest [travis
 build](https://travis-ci.org/phpbench/benchmarks-containers).
