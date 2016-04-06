@@ -5,14 +5,16 @@
         "Symfony Config is for Symfony Dependency Injection (for the cache)"
     ],
     "require": {
-        "phpbench/phpbench": "dev-master",
         "php-di/php-di": "^5.0.0",
         "symfony/dependency-injection": "^2.7.0",
         "pimple/pimple": "^3.0.0",
         "illuminate/container": "^5.0.0",
         "doctrine/cache": "@stable",
         "symfony/config": "^2.7.0",
-        "symfony/filesystem": "^2.7.0"
+        "symfony/filesystem": "^2.7.0",
+        "phpbench/phpbench": "^0.11.1",
+        "league/container": "^2.2",
+        "zendframework/zend-servicemanager": "^3.0"
     },
     "autoload": {
         "psr-4": {

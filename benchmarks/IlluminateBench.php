@@ -19,7 +19,7 @@ class IlluminateBench extends ContainerBenchCase
      */
     public function benchGetOptimized()
     {
-        $this->container['bicycle_factory'];
+        $this->container['bicycle_factory_shared'];
     }
 
     /**
@@ -29,9 +29,6 @@ class IlluminateBench extends ContainerBenchCase
     {
     }
 
-    /**
-     * @BeforeMethods({"initPrototype"})
-     */
     public function benchGetPrototype()
     {
         $this->container['bicycle_factory'];
@@ -45,7 +42,6 @@ class IlluminateBench extends ContainerBenchCase
 
     public function initOptimized()
     {
-        $this->init();
     }
 
     public function initUnoptimized()
@@ -53,17 +49,15 @@ class IlluminateBench extends ContainerBenchCase
         $this->init();
     }
 
-    public function initPrototype()
-    {
-        $this->init(true);
-    }
-
-    public function init($prototype = false)
+    public function init()
     {
         $builder = new Container();
+        $builder->bind('bicycle_factory_shared', function ($app) {
+            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory();
+        }, false);
         $builder->bind('bicycle_factory', function ($app) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory();
-        }, !$prototype);
+        }, true);
         $this->container = $builder;
     }
 }

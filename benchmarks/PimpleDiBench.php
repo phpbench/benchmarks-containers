@@ -25,7 +25,7 @@ class PimpleBench extends ContainerBenchCase
 
     public function benchGetPrototype()
     {
-        $this->container['bicycle_factory'];
+        $this->container['bicycle_factory_prototype'];
     }
 
     public function benchLifecycle()
@@ -44,23 +44,17 @@ class PimpleBench extends ContainerBenchCase
         $this->init();
     }
 
-    public function initPrototype()
-    {
-        $this->init(true);
-    }
-
-    public function init($prototype = false)
+    public function init()
     {
         $container = new Container();
         $closure = function ($c) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
         };
 
-        if ($prototype) {
-            $closure = $container->factory($closure);
-        }
+        $prototype = $container->factory($closure);
 
         $container['bicycle_factory'] = $closure;
+        $container['bicycle_factory_prototype'] = $prototype;
         $this->container = $container;
     }
 }

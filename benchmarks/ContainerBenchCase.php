@@ -5,31 +5,29 @@ namespace PhpBench\Benchmarks\Container;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @BeforeMethods({"clearCache"}, extend=true)
- * @Iterations(30)
- * @Revs(1000)
+ * @BeforeClassMethods({"clearCache"}, extend=true)
+ * @Iterations(50)
+ * @Revs({1, 1000})
  */
 abstract class ContainerBenchCase
 {
-    public function __construct()
+    public static function getCacheDir()
     {
-        $this->cacheDir = __DIR__ . '/../cache';
+        return __DIR__ . '/../cache';
     }
 
-    public function clearCache()
+    public static function clearCache()
     {
-        if (file_exists($this->cacheDir)) {
+        if (file_exists(self::getCacheDir())) {
             $fs = new Filesystem();
-            $fs->remove($this->cacheDir);
+            $fs->remove(self::getCacheDir());
         }
-        mkdir($this->cacheDir);
+        mkdir(self::getCacheDir());
     }
 
     abstract public function initOptimized();
 
     abstract public function initUnoptimized();
-
-    abstract public function initPrototype();
 
     /**
      * Return a single instance of
@@ -54,7 +52,7 @@ abstract class ContainerBenchCase
      * PhpBench\Benchmarks\Container\Acme\BicycleFactory from the container.
      *
      * @Groups({"prototype"})
-     * @BeforeMethods({"initPrototype"}, extend=true)
+     * @BeforeMethods({"initOptimized"}, extend=true)
      */
     abstract public function benchGetPrototype();
 

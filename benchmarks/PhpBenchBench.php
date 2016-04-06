@@ -25,11 +25,6 @@ class PhpBenchBench extends ContainerBenchCase
         $this->initUnoptimized();
     }
 
-    public function initPrototype()
-    {
-        $this->initUnoptimized();
-    }
-
     public function benchLifecycle()
     {
         $this->initUnoptimized();

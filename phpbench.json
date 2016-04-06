@@ -8,44 +8,5 @@
         }
     },
     "reports": {
-        "unoptimized": {
-            "extends": "aggregate",
-
-            "title": "Container get: shared, unoptimized",
-            "description": "Retrieve a shared instance of a single class from an unoptimized container",
-
-            "exclude": ["subject", "group", "params"],
-            "sort": {"mean": "asc"},
-            "debug": false,
-            "selector": "//subject[group/@name='unoptimized']/variant"
-        },
-        "optimized": {
-            "extends": "unoptimized",
-
-            "title": "Container get: shared, optimized",
-            "description": "Retrieve a shared instance of a single class from an optimized container",
-
-            "selector": "//subject[group/@name='optimized']/variant"
-        },
-        "prototype": {
-            "extends": "unoptimized",
-
-            "title": "Container get: prototype, optimized",
-            "description": "Retrieve a prototype instance of a single class from an optimized container",
-
-            "selector": "//subject[group/@name='prototype']/variant"
-        },
-        "lifecycle": {
-            "extends": "unoptimized",
-
-            "title": "Container get lifecycle: shared, optimized",
-            "description": "As with optimized, but time the entire lifecycle, not just the get",
-
-            "selector": "//subject[group/@name='lifecycle']/variant"
-        },
-        "all": {
-            "generator": "composite",
-            "reports": ["optimized", "prototype", "unoptimized", "lifecycle"]
-        }
     }
 }

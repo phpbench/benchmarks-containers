@@ -42,11 +42,6 @@ class PhpDiBench extends ContainerBenchCase
         $this->container->set('bicycle_factory', \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
     }
 
-    public function initPrototype()
-    {
-        $this->initOptimized();
-    }
-
     public function benchGetOptimized()
     {
         $this->container->get('bicycle_factory');
