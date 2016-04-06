@@ -7,7 +7,7 @@ use Doctrine\Common\Cache\FilesystemCache;
 
 /**
  * @Groups({"php-di"}, extend=true)
- * @BeforeClassMethods({"clearCache", "warmup"})
+ * @BeforeClassMethods({"clearCache"})
  */
 class PhpDiBench extends ContainerBenchCase
 {
@@ -24,12 +24,6 @@ class PhpDiBench extends ContainerBenchCase
         $builder->setDefinitionCache($cache);
 
         return $builder;
-    }
-
-    public static function warmup()
-    {
-        $builder = self::createBuilder();
-        $builder->writeProxiesToFile(true, 'tmp/proxies');
     }
 
     public function initOptimized()
