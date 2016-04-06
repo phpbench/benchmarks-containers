@@ -3,35 +3,41 @@
 namespace PhpBench\Benchmarks\Container;
 
 use DI\ContainerBuilder;
-use DI\Cache\ArrayCache;
+use Doctrine\Common\Cache\FilesystemCache;
 
 /**
  * @Groups({"php-di"}, extend=true)
+ * @BeforeClassMethods({"clearCache", "warmup"})
  */
 class PhpDiBench extends ContainerBenchCase
 {
     private $container;
 
-    private function createOptimizedBuilder()
+    private static function createBuilder()
     {
-        $cache = new ArrayCache($this->cacheDir);
+        $cache = new FilesystemCache(self::getCacheDir());
         $builder = new ContainerBuilder();
-        $builder->setDefinitionCache($cache);
         $builder->useAutowiring(false);
-        $builder->writeProxiesToFile(true, 'tmp/proxies');
         $builder->addDefinitions(array(
             'bicycle_factory' => \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory')
         ));
+        $builder->setDefinitionCache($cache);
 
         return $builder;
     }
 
+    public static function warmup()
+    {
+        $builder = self::createBuilder();
+        $builder->writeProxiesToFile(true, 'tmp/proxies');
+    }
+
     public function initOptimized()
     {
-        $builder = $this->createOptimizedBuilder();
+        $builder = self::createBuilder();
         $container = $builder->build();
         $container->get('bicycle_factory');
-        $this->container = $this->createOptimizedBuilder()->build();
+        $this->container = $container;
     }
 
     public function initUnoptimized()

@@ -7,8 +7,10 @@
             "extends": "html"
         }
     },
+    "retry_threshold": 5,
     "reports": {
         "container": {
+            "title": "Time",
             "generator": "table",
             "compare": "subject",
             "compare_fields": [ "mode" ],
@@ -16,6 +18,7 @@
             "cols": ["benchmark"]
         },
         "memory": {
+            "title": "Memory",
             "generator": "table",
             "compare": "subject",
             "compare_fields": [ "mem" ],
