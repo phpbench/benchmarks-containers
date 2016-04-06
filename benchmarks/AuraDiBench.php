@@ -48,9 +48,8 @@ class AuraDiBench extends ContainerBenchCase
     {
         $builder = new ContainerBuilder();
         $container = $builder->newInstance();
-        $container = new Container();
 
-        $container->set('bicycle_factory', $di->lazyNew('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
+        $container->set('bicycle_factory', $container->lazyNew('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
 
         $this->container = $container;
     }
