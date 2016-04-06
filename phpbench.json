@@ -8,5 +8,12 @@
         }
     },
     "reports": {
+        "container": {
+            "generator": "table",
+            "compare": "subject",
+            "compare_fields": [ "mode" ],
+            "break": ["revs"],
+            "cols": ["benchmark"]
+        }
     }
 }
