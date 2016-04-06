@@ -14,7 +14,8 @@
         "symfony/filesystem": "^2.7.0",
         "phpbench/phpbench": "^0.11.1",
         "league/container": "^2.2",
-        "zendframework/zend-servicemanager": "^3.0"
+        "zendframework/zend-servicemanager": "^3.0",
+        "aura/di": "^3.0"
     },
     "autoload": {
         "psr-4": {
