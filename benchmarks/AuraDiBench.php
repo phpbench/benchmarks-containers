@@ -27,7 +27,8 @@ class AuraDiBench extends ContainerBenchCase
     }
 
     public function benchLifecycle()
-    {        
+    {
+	$this->init(); 
         $this->container->get('bicycle_factory');
     }
 
