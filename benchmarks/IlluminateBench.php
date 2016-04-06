@@ -37,11 +37,12 @@ class IlluminateBench extends ContainerBenchCase
     public function benchLifecycle()
     {
         $this->init();
-        $this->container['bicycle_factory'];
+        $this->container['bicycle_factory_shared'];
     }
 
     public function initOptimized()
     {
+        $this->init();
     }
 
     public function initUnoptimized()
@@ -54,10 +55,10 @@ class IlluminateBench extends ContainerBenchCase
         $builder = new Container();
         $builder->bind('bicycle_factory_shared', function ($app) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory();
-        }, false);
+        }, true);
         $builder->bind('bicycle_factory', function ($app) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory();
-        }, true);
+        }, false);
         $this->container = $builder;
     }
 }

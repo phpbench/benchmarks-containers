@@ -7,7 +7,8 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * @BeforeClassMethods({"clearCache"}, extend=true)
  * @Iterations(50)
- * @Revs({1, 1000})
+ * @Revs({1000})
+ * @OutputTimeUnit("microseconds", precision=3)
  */
 abstract class ContainerBenchCase
 {

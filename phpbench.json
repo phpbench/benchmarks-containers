@@ -14,6 +14,13 @@
             "compare_fields": [ "mode" ],
             "break": ["revs"],
             "cols": ["benchmark"]
+        },
+        "memory": {
+            "generator": "table",
+            "compare": "subject",
+            "compare_fields": [ "mem" ],
+            "break": ["revs"],
+            "cols": ["benchmark"]
         }
     }
 }
