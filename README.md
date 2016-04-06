@@ -5,6 +5,9 @@ PHP Container Benchmarking Suite
 
 This benchmarking suite compares PHP Dependency Injection Containers.
 
+It is intended to be a base for developing a standard benchmarking suite for
+all of the PHP containers out there.
+
 Including:
 
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI).
@@ -21,7 +24,7 @@ ad-hoc call-back based container used by PHPBench itself.
 Disclaimer
 ----------
 
-I take no responsiblity for the accuracy of these benchmarks. If you want to
+We take no responsiblity for the accuracy of these benchmarks. If you want to
 be sure of the results please clone this repository, look at the code, and run
 the benchmarks yourself.
 
@@ -62,27 +65,28 @@ Subjects (all executed 1000 times):
 
 benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
  --- | --- | --- | --- | --- 
-PhpDiBench | 0.328μs | 0.690μs | 4.659μs | 34.985μs
-PhpBenchBench | 0.227μs |  |  | 1.437μs
-IlluminateBench | 0.737μs |  | 3.098μs | 8.038μs
-PimpleBench | 1.440μs |  | 1.433μs | 3.714μs
-SymfonyDiBench | 0.433μs | 0.987μs | 0.883μs | 3.756μs
-ZendServiceManagerBench | 0.275μs |  | 1.177μs | 3.836μs
-LeagueBench | 0.624μs |  | 1.916μs | 7.590μs
+PhpDiBench | 0.306μs | 0.693μs | 22.049μs | 50.622μs
+PhpBenchBench | 0.237μs |  |  | 1.522μs
+IlluminateBench | 0.733μs |  | 3.162μs | 8.171μs
+PimpleBench | 1.479μs |  | 1.457μs | 3.704μs
+SymfonyDiBench | 0.435μs | 1.001μs | 0.882μs | 3.797μs
+ZendServiceManagerBench | 0.259μs |  | 1.164μs | 4.139μs
+LeagueBench | 0.637μs |  | 1.906μs | 8.326μs
 
 ### Memory
 
 **NOTE**: Memory is `memory_get_peak_usage` after executing the operation 1000 times.
 
-benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototyp | benchLifecycle
+benchmark | mem | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
  --- | --- | --- | --- | --- | --- 
-PhpDiBench | 1,006,056b | 990,144b | 1,006,056b | 8,062,024b
-PhpBenchBench | 754,872b |  |  | 754,184b
-IlluminateBench | 986,264b |  | 986,272b | 985,584b
-PimpleBench | 764,000b |  | 764,000b | 763,312b
-SymfonyDiBench | 916,680b | 1,123,816b | 916,680b | 915,992b
-ZendServiceManagerBench | 901,944b |  | 901,944b | 2,991,904b
-LeagueBench | 885,104b |  | 885,104b | 2,715,656b
+PhpDiBench | 1,066,779b | 1,066,779b | 990,576b | 1,066,792b | 4,065,592b
+PhpBenchBench | 754,936b | 754,936b |  |  | 754,248b
+IlluminateBench | 986,328b | 986,328b |  | 986,336b | 985,648b
+PimpleBench | 764,064b | 764,064b |  | 764,064b | 763,376b
+SymfonyDiBench | 916,744b | 916,744b | 1,123,880b | 916,744b | 916,056b
+ZendServiceManagerBench | 902,008b | 902,008b |  | 902,008b | 2,991,968b
+LeagueBench | 885,168b | 885,168b |  | 885,168b | 2,715,720b
+
 
 Alternatively you may look at the latest [travis
 build](https://travis-ci.org/phpbench/benchmarks-containers).
