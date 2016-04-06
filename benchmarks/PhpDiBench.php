@@ -26,12 +26,6 @@ class PhpDiBench extends ContainerBenchCase
         return $builder;
     }
 
-    public static function warmup()
-    {
-        $builder = self::createBuilder();
-        $builder->writeProxiesToFile(true, 'tmp/proxies');
-    }
-
     public function initOptimized()
     {
         $builder = self::createBuilder();
