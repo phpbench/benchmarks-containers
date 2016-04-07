@@ -25,10 +25,6 @@
             "compare_fields": [ "mem" ],
             "break": ["revs"],
             "cols": ["benchmark"]
-        },
-        "all": {
-            "generator": "composite",
-            "reports": [ "env", "container", "memory" ]
         }
     }
 }
