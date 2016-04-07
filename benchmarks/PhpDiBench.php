@@ -3,7 +3,7 @@
 namespace PhpBench\Benchmarks\Container;
 
 use DI\ContainerBuilder;
-use Doctrine\Common\Cache\FilesystemCache;
+use Doctrine\Common\Cache\ArrayCache;
 
 /**
  * @Groups({"php-di"}, extend=true)
@@ -15,7 +15,7 @@ class PhpDiBench extends ContainerBenchCase
 
     private static function createBuilder()
     {
-        $cache = new FilesystemCache(self::getCacheDir());
+        $cache = new ArrayCache(self::getCacheDir());
         $builder = new ContainerBuilder();
         $builder->useAutowiring(false);
         $builder->addDefinitions(array(

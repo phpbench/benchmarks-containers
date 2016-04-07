@@ -96,7 +96,7 @@ PhpDiBench | 0.330μs | 0.725μs | 5.726μs | 23.315μs
 PhpBenchBench | 0.242μs |  |  | 1.443μs
 IlluminateBench | 0.734μs |  | 3.206μs | 8.128μs
 AuraDiBench | 0.297μs |  | 1.772μs | 8.933μs
-PimpleBench | 1.445μs |  | 1.461μs | 3.728μs
+PimpleBench | 0.419μs |  | 1.461μs | 3.728μs
 SymfonyDiBench | 0.433μs | 0.993μs | 0.873μs | 3.783μs
 ZendServiceManagerBench | 0.266μs |  | 1.169μs | 3.439μs
 LeagueBench | 0.628μs |  | 1.883μs | 7.628μs

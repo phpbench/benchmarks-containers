@@ -50,8 +50,9 @@ class PimpleBench extends ContainerBenchCase
         $closure = function ($c) {
             return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
         };
-
-        $prototype = $container->factory($closure);
+        $prototype = $container->factory(function ($c) {
+            return new \PhpBench\Benchmarks\Container\Acme\BicycleFactory;
+        });
 
         $container['bicycle_factory'] = $closure;
         $container['bicycle_factory_prototype'] = $prototype;
