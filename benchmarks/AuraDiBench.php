@@ -2,7 +2,10 @@
 
 namespace PhpBench\Benchmarks\Container;
 
-use Aura\Di\ContainerBuilder;
+use Aura\Di\Container;
+use Aura\Di\Injection\InjectionFactory;
+use Aura\Di\Resolver\Reflector;
+use Aura\Di\Resolver\Resolver;
 
 /**
  * @Groups({"aura-di"}, extend=true)
@@ -11,9 +14,11 @@ class AuraDiBench extends ContainerBenchCase
 {
     private $container;
 
+    /**
+     * @Skip()
+     */
     public function benchGetUnoptimized()
     {
-        $this->container->get('bicycle_factory');
     }
 
     public function benchGetOptimized()
@@ -28,7 +33,7 @@ class AuraDiBench extends ContainerBenchCase
 
     public function benchLifecycle()
     {
-	$this->init(); 
+        $this->init();
         $this->container->get('bicycle_factory');
     }
 
@@ -44,8 +49,11 @@ class AuraDiBench extends ContainerBenchCase
 
     public function init()
     {
-        $builder = new ContainerBuilder();
-        $container = $builder->newInstance();
+        $container = new Container(new InjectionFactory(new Resolver(new Reflector())));
+
+        // alternatively you can do
+        // $builder = new \Aura\Di\ContainerBuilder();
+        // $container = $builder->newInstance();
 
         $container->set('bicycle_factory', $container->lazyNew('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
 
