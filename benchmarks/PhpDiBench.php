@@ -15,13 +15,13 @@ class PhpDiBench extends ContainerBenchCase
 
     private static function createBuilder()
     {
-        $cache = new ArrayCache(self::getCacheDir());
+        //$cache = new ArrayCache(self::getCacheDir());
         $builder = new ContainerBuilder();
-        $builder->useAutowiring(false);
+        //$builder->useAutowiring(false);
         $builder->addDefinitions(array(
             'bicycle_factory' => \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory')
         ));
-        $builder->setDefinitionCache($cache);
+        //$builder->setDefinitionCache($cache);
 
         return $builder;
     }
@@ -30,14 +30,12 @@ class PhpDiBench extends ContainerBenchCase
     {
         $builder = self::createBuilder();
         $container = $builder->build();
-        $container->get('bicycle_factory');
         $this->container = $container;
     }
 
     public function initUnoptimized()
     {
         $builder = new ContainerBuilder();
-
         $this->container = $builder->build();
         $this->container->set('bicycle_factory', \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
     }
