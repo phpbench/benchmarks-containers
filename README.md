@@ -17,6 +17,7 @@ Including:
 - [Illuminate (Laravel) Container](https://github.com/illuminate/container)
 - [Php League Container](http://container.thephpleague.com/)
 - [Zend Service Manager](https://github.com/zendframework/zend-servicemanager)
+- [Aura DI](https://github.com/auraphp/aura.di)
 
 Note that PHPBench Container is not a "real" container, but a minimal
 ad-hoc call-back based container used by PHPBench itself.
@@ -38,6 +39,8 @@ Versions
 --------
 
 ```
+aura/di                             3.1.0   A serializable dependency
+injection container with constructor and setter injectio...
 illuminate/container                v5.2.28 The Illuminate Container package.
 league/container                    2.2.0   A fast and intuitive dependency injection container.
 php-di/php-di                       5.2.2   The dependency injection container
@@ -61,31 +64,57 @@ Subjects (all executed 1000 times):
 - `GetPrototype`: Return a new instance of the service.
 - `Lifecycle`: Instantiate the container and return a shared service.
 
+## Suite #1339f97fb7f96efa6de544e9f63f6116e81f85e2 2016-04-07 15:59:32
+
+50 iterations, 1000 revolutions, 5 warmup revolutions, stdev < 3%
+
+### Environment
+
+provider | key | value
+ --- | --- | --- 
+uname | os | Linux
+uname | host | dtlt410
+uname | release | 4.2.0-1-amd64
+uname | version | #1 SMP Debian 4.2.6-1 (2015-11-10)
+uname | machine | x86_64
+php | version | 7.0.3-3
+unix-sysload | l1 | 1.34
+unix-sysload | l5 | 1.16
+unix-sysload | l15 | 0.85
+vcs | system | git
+vcs | branch | master
+vcs | version | ce85c2f9b04832e4a5d0e47ff1a9bf40c3b72090
+baseline | nothing | 0.015020370483398
+baseline | md5 | 0.27108192443848
+baseline | file_rw | 1.3530254364014
+
 ### Time
 
 benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
  --- | --- | --- | --- | --- 
-PhpDiBench | 0.306μs | 0.693μs | 22.049μs | 50.622μs
-PhpBenchBench | 0.237μs |  |  | 1.522μs
-IlluminateBench | 0.733μs |  | 3.162μs | 8.171μs
-PimpleBench | 0.414μs |  | 1.457μs | 3.704μs
-SymfonyDiBench | 0.435μs | 1.001μs | 0.882μs | 3.797μs
-ZendServiceManagerBench | 0.259μs |  | 1.164μs | 4.139μs
-LeagueBench | 0.637μs |  | 1.906μs | 8.326μs
-
-### Memory
+PhpDiBench | 0.330μs | 0.725μs | 5.726μs | 23.315μs
+PhpBenchBench | 0.242μs |  |  | 1.443μs
+IlluminateBench | 0.734μs |  | 3.206μs | 8.128μs
+AuraDiBench | 0.297μs |  | 1.772μs | 8.933μs
+PimpleBench | 1.445μs |  | 1.461μs | 3.728μs
+SymfonyDiBench | 0.433μs | 0.993μs | 0.873μs | 3.783μs
+ZendServiceManagerBench | 0.266μs |  | 1.169μs | 3.439μs
+LeagueBench | 0.628μs |  | 1.883μs | 7.628μs
 
 **NOTE**: Memory is `memory_get_peak_usage` after executing the operation 1000 times.
 
-benchmark | mem | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
+### Memory
+
+benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
  --- | --- | --- | --- | --- | --- 
-PhpDiBench | 1,066,779b | 1,066,779b | 990,576b | 1,066,792b | 4,065,592b
-PhpBenchBench | 754,936b | 754,936b |  |  | 754,248b
-IlluminateBench | 986,328b | 986,328b |  | 986,336b | 985,648b
-PimpleBench | 764,064b | 764,064b |  | 764,064b | 763,376b
-SymfonyDiBench | 916,744b | 916,744b | 1,123,880b | 916,744b | 916,056b
-ZendServiceManagerBench | 902,008b | 902,008b |  | 902,008b | 2,991,968b
-LeagueBench | 885,168b | 885,168b |  | 885,168b | 2,715,720b
+PhpDiBench | 1,037,152b | 991,016b | 1,037,152b | 5,881,272b
+PhpBenchBench | 755,912b |  |  | 755,224b
+IlluminateBench | 987,304b |  | 987,312b | 986,624b
+AuraDiBench | 881,248b |  | 881,248b | 880,560b
+PimpleBench | 765,040b |  | 765,040b | 764,352b
+SymfonyDiBench | 917,720b | 1,124,856b | 917,720b | 917,032b
+ZendServiceManagerBench | 902,984b |  | 902,984b | 2,992,944b
+LeagueBench | 886,144b |  | 886,144b | 2,716,696b
 
 Alternatively you may look at the latest [travis
 build](https://travis-ci.org/phpbench/benchmarks-containers).
