@@ -8,6 +8,7 @@
         }
     },
     "retry_threshold": 5,
+    "progress": "blinken",
     "reports": {
         "container": {
             "title": "Time",
@@ -24,6 +25,10 @@
             "compare_fields": [ "mem" ],
             "break": ["revs"],
             "cols": ["benchmark"]
+        },
+        "all": {
+            "generator": "composite",
+            "reports": [ "env", "container", "memory" ]
         }
     }
 }
