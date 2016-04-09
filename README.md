@@ -125,12 +125,18 @@ Run the Benchmarks
 
 ````bash
 $ composer install
-$ ./vendor/bin/phpbench run --report=container
+$ ./vendor/bin/phpbench run --report=all
 ````
 
 or
 
 ```bash
 $ ./vendor/bin/phpbench run --store
-$ ./vendor/bin/phpbench show latest --report=container
+$ ./vendor/bin/phpbench show latest --report=all
+```
+
+For the HTML report:
+
+```
+$ ./vendor/bin/phpbench show latest --report=all --output=container_html
 ```

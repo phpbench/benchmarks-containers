@@ -9,4 +9,4 @@ before_script:
   - composer install
 
 script: 
-  - php vendor/bin/phpbench run --report=env --report=container --report=memory
+  - php vendor/bin/phpbench run --report=all

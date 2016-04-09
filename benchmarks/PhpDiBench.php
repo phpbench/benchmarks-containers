@@ -3,41 +3,46 @@
 namespace PhpBench\Benchmarks\Container;
 
 use DI\ContainerBuilder;
-use Doctrine\Common\Cache\ArrayCache;
+use DI\Cache\ArrayCache;
 
 /**
  * @Groups({"php-di"}, extend=true)
- * @BeforeClassMethods({"clearCache"})
  */
 class PhpDiBench extends ContainerBenchCase
 {
     private $container;
 
-    private static function createBuilder()
+    private function createOptimizedBuilder()
     {
-        //$cache = new ArrayCache(self::getCacheDir());
+        $cache = new ArrayCache($this->cacheDir);
         $builder = new ContainerBuilder();
-        //$builder->useAutowiring(false);
+        $builder->setDefinitionCache($cache);
         $builder->addDefinitions(array(
             'bicycle_factory' => \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory')
         ));
-        //$builder->setDefinitionCache($cache);
 
         return $builder;
     }
 
     public function initOptimized()
     {
-        $builder = self::createBuilder();
+        $builder = $this->createOptimizedBuilder();
         $container = $builder->build();
-        $this->container = $container;
+        $container->get('bicycle_factory');
+        $this->container = $this->createOptimizedBuilder()->build();
     }
 
     public function initUnoptimized()
     {
         $builder = new ContainerBuilder();
+
         $this->container = $builder->build();
         $this->container->set('bicycle_factory', \DI\object('PhpBench\Benchmarks\Container\Acme\BicycleFactory'));
+    }
+
+    public function initPrototype()
+    {
+        $this->initOptimized();
     }
 
     public function benchGetOptimized()
