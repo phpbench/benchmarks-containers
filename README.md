@@ -107,7 +107,7 @@ LeagueBench | 0.628μs |  | 1.883μs | 7.628μs
 ### Memory
 
 benchmark | benchGetOptimized | benchGetUnoptimized | benchGetPrototype | benchLifecycle
- --- | --- | --- | --- | --- | --- 
+ --- | --- | --- | --- | ---
 PhpDiBench | 1,037,152b | 991,016b | 1,037,152b | 5,881,272b
 PhpBenchBench | 755,912b |  |  | 755,224b
 IlluminateBench | 987,304b |  | 987,312b | 986,624b
